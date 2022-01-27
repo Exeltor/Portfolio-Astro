@@ -1,0 +1,38 @@
+---
+import Navigation from '../components/Navigation.vue'
+
+const fullPath = Astro.request.url.toString()
+const cleanSegments = fullPath.split('/').slice(2, fullPath.split('/').length)
+---
+
+<html lang="en">
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Portfolio</title>
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<style global>
+			@import "../styles/global.css";
+      @import "../styles/blobz.min.css";
+		</style>
+	</head>
+  <body>
+    <div class="flex flex-col min-h-screen">
+      <div class="flex flex-row justify-between">
+        <div class="flex flex-row items-end">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          {cleanSegments.map((segment, index) => {
+            return <a href={`//${cleanSegments.slice(0, index + 1).join('/')}`}>{index != cleanSegments.length - 1 ? `${segment}/` : segment}</a>
+          })}
+        </div>
+        <Navigation client:idle />
+      </div>
+      <slot />
+    </div>
+  </body>
+</html>
+
+

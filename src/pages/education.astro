@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const reponse = await fetch('http://api.scraping-bot.io/scrape/data-scraper', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    Authorization: Buffer.from('Basic exeltor:Ot2jw4WSLrj6otHXac1CWuPrq?scraper=linkedinProfile', 'base64').toString()
+  }
+})
+---
+
+<BaseLayout>
+  <div>
+    <debug>{result}</debug>
+  </div>
+</BaseLayout>
