@@ -1,11 +1,9 @@
 module.exports = {
   content: [
-    './public/**/*.html',
-    './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}'
+    './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}',
+    './public/**/*.html'
   ],
   theme: {
-    fontFamily: {
-    },
     extend: {},
   },
   plugins: [],
